@@ -1,3 +1,17 @@
+<a name="2.7.0"></a>
+# [2.7.0](https://github.com/bitpay/cordova-plugin-qrscanner/compare/2.6.0...v2.7.0) (2018-10-29)
+
+### Bug Fixes
+
+* **package:** Updated package version w.r.t. custom change
+
+
+### Features
+
+* **android:** Adjusted camera preview height to be dynamic (half of screen resolution). This, shifts focus area of scanner further up the screen.
+
+
+
 <a name="2.6.0"></a>
 # [2.6.0](https://github.com/bitpay/cordova-plugin-qrscanner/compare/2.5.0...2.6.0) (2018-05-17)
 
