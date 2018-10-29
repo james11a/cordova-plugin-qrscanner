@@ -27,6 +27,7 @@ import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.util.DisplayMetrics;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -447,6 +448,11 @@ public class QRScanner extends CordovaPlugin implements BarcodeCallback {
         }
     }
     private void setupCamera(CallbackContext callbackContext) {
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        cordova.getActivity().getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        int height = displayMetrics.heightPixels / 2;
+        int width = displayMetrics.widthPixels;
+
         cordova.getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -460,10 +466,10 @@ public class QRScanner extends CordovaPlugin implements BarcodeCallback {
 
                 //Configure the camera (front/back)
                 CameraSettings settings = new CameraSettings();
-                settings.setRequestedCameraId(getCurrentCameraId());
+                settings.setRequestedCameraId(getCurrentCameraId()); 
                 mBarcodeView.setCameraSettings(settings);
 
-                FrameLayout.LayoutParams cameraPreviewParams = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, 1200);
+                FrameLayout.LayoutParams cameraPreviewParams = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, height);
                 ((ViewGroup) webView.getView().getParent()).addView(mBarcodeView, cameraPreviewParams);
 
                 cameraPreviewing = true;
